@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">Toutesmesaides</mat-toolbar>
+<mat-toolbar>Se connecter</mat-toolbar>
+<div class="card-container">
+  <mat-card class="card-modal">
+    <mat-card-content>
+      <form class="form-container" [formGroup]="loginForm">
+        <mat-form-field><input matInput="" type="text" placeholder="login" formControlName="login" required="required"/>
+          <mat-error *ngIf="loginForm.controls['login']?.errors?.required">Le login est obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field><input matInput="" type="password" placeholder="email" formControlName="password"
+                               required="required"/>
+          <mat-error>Le mot de passe est obligatoire</mat-error>
+        </mat-form-field>
+      </form>
+      <mat-card-actions>
+        <button class="right uppercase" mat-flat-button="mat-flat-button" type="button" (click)="login(loginForm.value)"
+                [disabled]="loginForm.invalid">Valider
+        </button>
+        <button class="right uppercase" mat-button="mat-button" type="button" (click)="reset()">Annuler</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

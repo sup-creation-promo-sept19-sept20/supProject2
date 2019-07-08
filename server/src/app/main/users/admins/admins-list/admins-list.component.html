@@ -1,0 +1,32 @@
+<mat-toolbar color="secondary">Liste des administrateurs</mat-toolbar>
+<mat-menu #moreMenu="matMenu">
+  <ng-template matMenuContent="" let-user="user"><button mat-menu-item="" (click)="delete(user)">Supprimer</button></ng-template>
+</mat-menu>
+<table class="mat-elevation-z8" mat-table="" [dataSource]="dataSource" matSort="">
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef="" mat-sort-header="">Prénom</th>
+    <td mat-cell="mat-cell" *matCellDef="let user">{{ user.firstName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef="" mat-sort-header="">Nom</th>
+    <td mat-cell="mat-cell" *matCellDef="let user">{{ user.lastName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="city">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef="" mat-sort-header="">Ville</th>
+    <td mat-cell="mat-cell" *matCellDef="let user">{{ user.city }}</td>
+  </ng-container>
+  <ng-container matColumnDef="isAdmin">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef="" mat-sort-header="">Admin</th>
+    <td mat-cell="mat-cell" *matCellDef="let user">{{ user.isAdmin }}</td>
+  </ng-container>
+  <ng-container matColumnDef="go">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef=""></th>
+    <td mat-cell="mat-cell" *matCellDef="let user"><button mat-icon-button="" (click)="goToUser(user)"><mat-icon>visibility</mat-icon></button></td>
+  </ng-container>
+  <ng-container matColumnDef="more">
+    <th mat-header-cell="mat-header-cell" *matHeaderCellDef=""></th>
+    <td mat-cell="mat-cell" *matCellDef="let user"><button mat-button="" [matMenuTriggerFor]="moreMenu" [matMenuTriggerData]="{user: user}"><mat-icon>more_vert</mat-icon></button></td>
+  </ng-container>
+  <tr mat-header-row="mat-header-row" *matHeaderRowDef="displayedColumns"></tr>
+</table>
+<tr mat-row="mat-row" *matRowDef="let row; columns: displayedColumns"></tr>

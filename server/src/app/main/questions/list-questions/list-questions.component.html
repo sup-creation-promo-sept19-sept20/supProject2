@@ -1,0 +1,33 @@
+<mat-toolbar color="secondary">Liste des questions</mat-toolbar>
+<section class="search-bar">
+  <form>
+    <mat-form-field class="width-50"><input type="text" placeholder="Pick one" aria-label="Number" matInput="" [formControl]="myControl" [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{option}}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</section>
+<section class="content">
+  <mat-accordion>
+    <mat-expansion-panel class="panel" *ngFor="let question of questions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ question?.title}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-divider></mat-divider>
+      <div>Nom : {{ question?.name}}</div>
+      <div>Sous-titre : {{ question?.subtitle}}</div>
+      <div>Placeholder : {{ question?.placeholder}}</div>
+      <div>Poid : {{ question?.weight}}</div>
+      <div>Position : {{ question?.position}}</div>
+      <div>Section : {{ question?.section}}</div>
+      <div>Type : {{ question?.type}}</div>
+      <div>Description longue :</div>
+      <div>{{ question?.description_long}}</div>
+      <div>Description courte :</div>
+      <div>{{ question?.description_short}}</div>
+      <mat-divider></mat-divider>
+      <div class="flex middle flex-end"><a [routerLink]="'/questions/edition-question/' + question?.uid"><i class="material-icons">edit</i></a></div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>
