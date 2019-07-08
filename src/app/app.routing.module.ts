@@ -13,7 +13,8 @@ const routes: Routes = [
     path: 'connect',
     loadChildren: './connect/connect.module#ConnectModule',
     canActivate: [AlreadyConnectedGuard]
-  }
+  },
+
 ];
 
 @NgModule({

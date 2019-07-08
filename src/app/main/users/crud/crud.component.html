@@ -1,0 +1,21 @@
+<section>
+  <form [formGroup]="hostelForm" (ngSubmit)="postForm()">
+
+    <mat-form-field>
+      <label>
+        <input matInput formControlName="name" required>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput formControlName="size" required>
+      </label>
+    </mat-form-field>
+
+    <button type="submit">ENVOYER</button>
+
+  </form>
+
+</section>
+
